@@ -5,7 +5,7 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.background};
+  background-color: ${theme.colors.brand800};
 `
 
 export const Hero = styled.Image`
@@ -23,6 +23,8 @@ export const Title = styled.Text`
   color: ${theme.colors.heading};
   font-size: 40px;
   margin-bottom: 16px;
+  font-family: ${theme.fonts.rajdhani700};
+  line-height: 40px;
 `
 
 export const Subtitle = styled.Text`
@@ -30,4 +32,6 @@ export const Subtitle = styled.Text`
   color: ${theme.colors.heading};
   font-size: 15px;
   margin-bottom: 64px;
+  font-family: ${theme.fonts.inter500};
+  line-height: 25px;
 `
