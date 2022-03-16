@@ -8,7 +8,7 @@ import {
   Rajdhani_700Bold
 } from '@expo-google-fonts/rajdhani'
 
-import LoadingApp from 'expo-app-loading'
+import AppLoading from 'expo-app-loading'
 
 import { SignIn } from './src/screens/SignIn'
 
@@ -20,7 +20,9 @@ export default function App() {
     Rajdhani_700Bold
   })
 
-  if (!fontLoading) <LoadingApp />
+  if (!fontLoading) {
+    return <AppLoading />
+  }
 
   return (
     <>
