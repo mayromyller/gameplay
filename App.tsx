@@ -10,7 +10,9 @@ import {
 
 import AppLoading from 'expo-app-loading'
 
-import { SignIn } from './src/screens/SignIn'
+import { Routes } from './src/routes'
+
+import Gradient from './src/components/Gradient'
 
 export default function App() {
   const [fontLoading] = useFonts({
@@ -25,13 +27,13 @@ export default function App() {
   }
 
   return (
-    <>
+    <Gradient>
       <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"
         translucent
       />
-      <SignIn />
-    </>
+      <Routes />
+    </Gradient>
   )
 }

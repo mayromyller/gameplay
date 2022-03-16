@@ -1,14 +1,7 @@
 import styled from 'styled-components/native'
 import { theme } from '../../global/styles/theme'
 
-export const ButtonContainer = styled.TouchableOpacity`
-  width: 100%;
-  height: 56px;
-  background-color: ${theme.colors.primary};
-  border-radius: 8px;
-  flex-direction: row;
-  align-items: center;
-`
+import { StyleSheet } from 'react-native'
 
 export const Wrapper = styled.View`
   align-items: center;
@@ -30,3 +23,14 @@ export const Title = styled.Text`
   text-align: center;
   color: ${theme.colors.heading};
 `
+
+export const styles = StyleSheet.create({
+  ButtonContainer: {
+    width: '100%',
+    height: 56,
+    backgroundColor: theme.colors.primary,
+    borderRadius: 8,
+    flexDirection: 'row',
+    alignItems: 'center'
+  }
+})

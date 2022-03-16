@@ -5,7 +5,6 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.brand800};
 `
 
 export const Hero = styled.Image`
