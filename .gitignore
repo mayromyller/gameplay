@@ -56,3 +56,6 @@ dist/
 
 # Editor
 .vscode
+
+# Files
+generators
