@@ -7,6 +7,11 @@ export const Container = styled.View`
   flex: 1;
 `
 
+export const Content = styled.View`
+  margin-top: 40px;
+  padding: 0 24px;
+`
+
 export const styles = StyleSheet.create({
   header: {
     width: '100%',
