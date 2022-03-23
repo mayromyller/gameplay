@@ -10,9 +10,20 @@ import { Container, Content, styles } from './styles'
 import { ListHeader } from '../../components/ListHeader'
 import { Appointment } from '../../components/Appointment'
 import { Divider } from '../../components/Divider'
+import Gradient from '../../components/Gradient'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { RootStackParam } from '../../routes/auth.routes'
+
+type HomeScreenProps = NativeStackNavigationProp<
+  RootStackParam,
+  'AppointmentDetails'
+>
 
 export function Home() {
   const [category, setCategory] = useState('')
+
+  const navigation = useNavigation<HomeScreenProps>()
 
   const appointments = [
     {
@@ -45,8 +56,12 @@ export function Home() {
     categoryId === category ? setCategory('') : setCategory(categoryId)
   }
 
+  function handleAppointmentDetails() {
+    navigation.navigate('AppointmentDetails')
+  }
+
   return (
-    <Container>
+    <Gradient>
       <View style={styles.header}>
         <Profile />
         <ButtonAdd activeOpacity={0.7} />
@@ -63,12 +78,14 @@ export function Home() {
         <FlatList
           data={appointments}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <Appointment data={item} />}
+          renderItem={({ item }) => (
+            <Appointment data={item} onPress={handleAppointmentDetails} />
+          )}
           ItemSeparatorComponent={() => <Divider />}
           showsVerticalScrollIndicator={false}
           style={{ marginTop: 24 }}
         />
       </Content>
-    </Container>
+    </Gradient>
   )
 }
