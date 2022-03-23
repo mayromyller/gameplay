@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 import { theme } from '../../global/styles/theme'
 
 export const Title = styled.Text`
-  font-family: ${theme.fonts.rajdhani500};
+  font-family: ${theme.fonts.rajdhani700};
   font-size: 15px;
   color: ${theme.colors.heading};
 `
@@ -23,25 +23,30 @@ export const styles = StyleSheet.create({
     height: 116,
     flexDirection: 'column',
     justifyContent: 'space-between',
-    padding: 7,
+    paddingVertical: 20,
+    borderRadius: 8,
     alignItems: 'center'
   },
 
   checked: {
+    position: 'absolute',
+    top: 7,
+    right: 7,
     width: 10,
     height: 10,
     backgroundColor: theme.colors.primary,
-    alignSelf: 'flex-end',
     borderColor: theme.colors.brand300,
     borderWidth: 1,
     borderRadius: 3
   },
 
   check: {
+    position: 'absolute',
+    top: 7,
+    right: 7,
     width: 10,
     height: 10,
     backgroundColor: theme.colors.brand900,
-    alignSelf: 'flex-end',
     borderColor: theme.colors.brand500,
     borderWidth: 1,
     borderRadius: 3
