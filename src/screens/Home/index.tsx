@@ -56,15 +56,16 @@ export function Home() {
     categoryId === category ? setCategory('') : setCategory(categoryId)
   }
 
-  function handleAppointmentDetails() {
+  const handleAppointmentDetails = () =>
     navigation.navigate('AppointmentDetails')
-  }
+
+  const handleAppointmentCreate = () => navigation.navigate('AppointmentCreate')
 
   return (
     <Gradient>
       <View style={styles.header}>
         <Profile />
-        <ButtonAdd activeOpacity={0.7} />
+        <ButtonAdd activeOpacity={0.7} onPress={handleAppointmentCreate} />
       </View>
 
       <CategorySelect
