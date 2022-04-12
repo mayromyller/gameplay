@@ -27,7 +27,7 @@ export function Header({ title, action }: HeaderProps) {
         <Feather name="arrow-left" size={24} color={heading} />
       </Pressable>
       <S.TextTitle>{title}</S.TextTitle>
-      {action && <View>{action}</View>}
+      {action ? <View>{action}</View> : <View style={{ width: 24 }} />}
     </S.LinearGradientContainer>
   )
 }

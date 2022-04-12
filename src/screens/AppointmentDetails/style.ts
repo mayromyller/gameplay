@@ -10,7 +10,6 @@ export const ViewContainer = styled.View`
 export const ImageBackgroundStyle = styled.ImageBackground`
   width: 100%;
   height: 234px;
-  margin-bottom: 30px;
 `
 
 export const ViewContent = styled.View`
@@ -30,6 +29,7 @@ export const TextSubtitle = styled.Text`
   font-size: 13px;
   font-family: ${theme.fonts.inter400};
   color: ${theme.colors.heading};
+  line-height: 21px;
 `
 
 export const ViewWrapper = styled.View`

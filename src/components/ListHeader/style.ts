@@ -5,6 +5,7 @@ export const ViewContainer = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 27px;
 `
 
 export const TextTitle = styled.Text`

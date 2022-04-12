@@ -11,5 +11,5 @@ export const TextInputContainer = styled(TextInput)`
   font-family: ${theme.fonts.inter400};
   font-size: 13px;
   margin-right: 4px;
-  padding: 4px 12px;
+  padding: 16px;
 `

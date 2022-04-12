@@ -17,6 +17,12 @@ function Guilds({ handleGuildSelect }: GuildsProps) {
       name: 'Lendários',
       icon: null,
       owner: true
+    },
+    {
+      id: '2',
+      name: 'Lendários',
+      icon: null,
+      owner: true
     }
   ]
 
@@ -31,8 +37,13 @@ function Guilds({ handleGuildSelect }: GuildsProps) {
         renderItem={({ item }) => (
           <Guild data={item} onPress={() => handleGuildSelect(item)} />
         )}
-        ItemSeparatorComponent={() => <Divider />}
+        ItemSeparatorComponent={() => <Divider isCentered />}
+        ListHeaderComponent={() => <Divider isCentered />}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingBottom: 40,
+          paddingTop: 40
+        }}
       />
     </S.ViewContainer>
   )

@@ -75,18 +75,21 @@ export function Home() {
 
       <Content>
         <ListHeader title="Partidas Agendadas" subtitle="Total 6" />
-
-        <FlatList
-          data={appointments}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => (
-            <Appointment data={item} onPress={handleAppointmentDetails} />
-          )}
-          ItemSeparatorComponent={() => <Divider />}
-          showsVerticalScrollIndicator={false}
-          style={{ marginTop: 24 }}
-        />
       </Content>
+
+      <FlatList
+        data={appointments}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Appointment data={item} onPress={handleAppointmentDetails} />
+        )}
+        ItemSeparatorComponent={() => <Divider />}
+        showsVerticalScrollIndicator={false}
+        style={{ marginTop: 24, paddingHorizontal: 24 }}
+        contentContainerStyle={{
+          paddingBottom: 40
+        }}
+      />
     </Gradient>
   )
 }
