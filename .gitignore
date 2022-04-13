@@ -59,3 +59,5 @@ dist/
 
 # Files
 generators
+
+config/
