@@ -14,7 +14,8 @@ export const theme = {
     line: '#991f36',
     on: '#32BD50',
 
-    overlay: 'rgba(0,0,0,0.7))'
+    overlay: 'rgba(0,0,0,0.7))',
+    discord: '#5865f2'
   },
 
   fonts: {
