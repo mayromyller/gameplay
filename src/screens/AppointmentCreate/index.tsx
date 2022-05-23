@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 
 import { View, ScrollView, Platform } from 'react-native'
 
+import uuid from 'react-native-uuid'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import Gradient from '../../components/Gradient'
 import { CategorySelect } from '../../components/CategorySelect'
 import { Header } from '../../components/Header'
@@ -19,11 +22,28 @@ import Guilds from '../Guilds'
 import { GuildProps } from '../../components/Guild'
 
 import * as S from './style'
+import { COLLECTION_APPOINTMENTS } from '../../config/database'
+import { RootStackParam } from '../../routes/auth.routes'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { useNavigation } from '@react-navigation/native'
+
+type AppointmentCreateNavigationProps = NativeStackNavigationProp<
+  RootStackParam,
+  'AppointmentDetails'
+>
 
 export function AppointmentCreate() {
   const [category, setCategory] = useState('')
   const [openModal, setOpenModal] = useState(false)
   const [guild, setGuild] = useState<GuildProps>({} as GuildProps)
+
+  const [minute, setMinute] = useState('')
+  const [hour, setHour] = useState('')
+  const [day, setDay] = useState('')
+  const [month, setMonth] = useState('')
+  const [description, setDescription] = useState('')
+
+  const navigation = useNavigation<AppointmentCreateNavigationProps>()
 
   const handleOpenModal = () => setOpenModal(true)
   const handleCloseModal = () => setOpenModal(false)
@@ -31,6 +51,26 @@ export function AppointmentCreate() {
   const handleGuildSelect = (guildSelect: GuildProps) => {
     setGuild(guildSelect)
     setOpenModal(false)
+  }
+
+  const handleSave = async () => {
+    const newAppointment = {
+      id: uuid.v4(),
+      guild,
+      category,
+      date: `${day}/${month} as ${hour}:${minute}h`,
+      description
+    }
+
+    const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS)
+    const appointments = storage ? JSON.parse(storage) : []
+
+    await AsyncStorage.setItem(
+      COLLECTION_APPOINTMENTS,
+      JSON.stringify([...appointments, newAppointment])
+    )
+
+    navigation.navigate('Home')
   }
 
   return (
@@ -59,7 +99,11 @@ export function AppointmentCreate() {
           <S.ViewForm>
             <S.TouchableOpacityButton onPress={handleOpenModal}>
               <S.ViewSelect>
-                {guild.name ? <GuildImage /> : <S.ViewImage />}
+                {guild.name ? (
+                  <GuildImage guildId={guild.id} iconId={guild.icon} />
+                ) : (
+                  <S.ViewImage />
+                )}
 
                 <S.ViewSelectBody>
                   <S.TextLabel>
@@ -79,17 +123,17 @@ export function AppointmentCreate() {
               <View>
                 <S.TextLabel>Dia e mês</S.TextLabel>
                 <S.ViewColumn>
-                  <SmallInput maxLength={2} />
+                  <SmallInput maxLength={2} onChangeText={setDay} />
                   <S.TextDivider>/</S.TextDivider>
-                  <SmallInput maxLength={2} />
+                  <SmallInput maxLength={2} onChangeText={setMonth} />
                 </S.ViewColumn>
               </View>
               <View>
                 <S.TextLabel>Hora e minuto</S.TextLabel>
                 <S.ViewColumn>
-                  <SmallInput maxLength={2} />
+                  <SmallInput maxLength={2} onChangeText={setHour} />
                   <S.TextDivider>:</S.TextDivider>
-                  <SmallInput maxLength={2} />
+                  <SmallInput maxLength={2} onChangeText={setMinute} />
                 </S.ViewColumn>
               </View>
             </S.ViewField>
@@ -104,10 +148,11 @@ export function AppointmentCreate() {
               maxLength={100}
               numberOfLines={5}
               autoCorrect={false}
+              onChangeText={setDescription}
             />
 
             <S.ViewFooter>
-              <Button title="Agendar" />
+              <Button title="Agendar" onPress={handleSave} />
             </S.ViewFooter>
           </S.ViewForm>
         </ScrollView>
