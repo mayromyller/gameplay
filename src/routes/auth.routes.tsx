@@ -5,13 +5,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from '../screens/Home'
 import { AppointmentDetails } from '../screens/AppointmentDetails'
 import { AppointmentCreate } from '../screens/AppointmentCreate'
+import { AppointmentProps } from '../components/Appointment'
 
 const Stack = createNativeStackNavigator()
 
 export type RootStackParam = {
   Home: undefined
   SignIn: undefined
-  AppointmentDetails: undefined
+  AppointmentDetails: { guildSelected: AppointmentProps }
   AppointmentCreate: undefined
 }
 
