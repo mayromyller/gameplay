@@ -41,7 +41,7 @@ export function Appointment({ data, ...rest }: ButtonProps) {
   return (
     <TouchableOpacity {...rest}>
       <S.ViewContainer>
-        <GuildImage />
+        <GuildImage guildId={data.guild.id} iconId={data.guild.icon} />
 
         <S.ViewContent>
           <S.ViewHeader>
