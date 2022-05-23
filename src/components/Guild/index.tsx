@@ -23,7 +23,7 @@ type Props = TouchableOpacityProps & {
 export function Guild({ data, ...rest }: Props) {
   return (
     <S.TouchButton {...rest}>
-      <GuildImage />
+      <GuildImage guildId={data.id} iconId={data.icon} />
 
       <S.ViewContent>
         <View>
